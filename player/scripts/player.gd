@@ -1,6 +1,10 @@
 class_name Player
 extends CharacterBody2D
 
+#region /// Export Variables
+@export var move_speed: float = 100
+#endregion
+
 #region /// State Machine Variables
 var states: Array[PlayerState]#状态栈
 var current_state: PlayerState:#当前状态
@@ -8,6 +12,7 @@ var current_state: PlayerState:#当前状态
 var previous_state: PlayerState:#先前状态
 	get: return states[1]#要获取的时候直接返回数组的第二个
 #endregion
+
 
 #region /// Standard Variables
 var direction: Vector2 = Vector2.ZERO
@@ -53,6 +58,7 @@ func initialize_states() -> void:
 	#切换到现在这个状态并触发他的enter
 	change_state(current_state)
 	current_state.enter()
+	$Label.text = current_state.name
 	#建立我们的第一个状态
 	pass
 
@@ -69,11 +75,15 @@ func change_state(new_state: PlayerState) -> void:
 	states.push_front(new_state)
 	current_state.enter()
 	states.resize(3)
+	$Label.text = current_state.name
 	pass
 
 func update_direction() -> void:#更新方向
-	#var prev_direction: Vector2 = direction
+	var prev_direction: Vector2 = direction
 	
-	direction = Input.get_vector("left", "right", "up", "down")
+	#direction = Input.get_vector("left", "right", "up", "down")
+	var x_axis = Input.get_axis("left", "right")#区别在于在输入映射的时候会剔除0.2(死区)
+	var y_axis = Input.get_axis("up", "down")
+	direction = Vector2(x_axis, y_axis)
 	
 	pass

@@ -12,6 +12,7 @@ size = Vector2(32, 32)
 
 [node name="Player" type="CharacterBody2D" unique_id=219147646]
 script = ExtResource("1_oul6g")
+move_speed = 150.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=517147044]
 texture = SubResource("PlaceholderTexture2D_rkbax")
@@ -22,7 +23,22 @@ shape = SubResource("RectangleShape2D_kqu6x")
 [node name="States" type="Node" parent="." unique_id=543416060]
 
 [node name="Idle" type="Node" parent="States" unique_id=536482778]
+unique_name_in_owner = true
 script = ExtResource("1_rkbax")
 
 [node name="Run" type="Node" parent="States" unique_id=549916714]
+unique_name_in_owner = true
 script = ExtResource("2_g1dw6")
+
+[node name="Jump" type="Node" parent="States" unique_id=331766266]
+
+[node name="Fall" type="Node" parent="States" unique_id=1400642928]
+
+[node name="Label" type="Label" parent="." unique_id=1370599494]
+offset_left = -27.0
+offset_top = -42.0
+offset_right = 28.0
+offset_bottom = -19.0
+text = "Label"
+horizontal_alignment = 1
+vertical_alignment = 1
