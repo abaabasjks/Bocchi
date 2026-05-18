@@ -3,6 +3,13 @@ extends CharacterBody2D
 
 const DEBUG_JUMP_INDICATOR = preload("uid://bh5w0awpjg4w7")
 
+#region /// On Ready Variables
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var collision_stand: CollisionShape2D = $CollisionStand
+@onready var collision_crouch: CollisionShape2D = $CollisionCrouch
+@onready var one_way_platform_raycast: RayCast2D = $OneWayPlatformRaycast
+
+#endregion 
 
 #region /// Export Variables
 @export var move_speed: float = 100
@@ -15,7 +22,6 @@ var current_state: PlayerState:#当前状态
 var previous_state: PlayerState:#先前状态
 	get: return states[1]#要获取的时候直接返回数组的第二个
 #endregion
-
 
 #region /// Standard Variables
 var direction: Vector2 = Vector2.ZERO

@@ -10,10 +10,15 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rkbax"]
 size = Vector2(32, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqu6x"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6k8r"]
 size = Vector2(32, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqu6x"]
+size = Vector2(32, 16)
+
 [node name="Player" type="CharacterBody2D" unique_id=219147646]
+collision_layer = 0
+collision_mask = 3
 script = ExtResource("1_oul6g")
 move_speed = 150.0
 
@@ -21,9 +26,14 @@ move_speed = 150.0
 position = Vector2(0, -16)
 texture = SubResource("PlaceholderTexture2D_rkbax")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1952792227]
+[node name="CollisionStand" type="CollisionShape2D" parent="." unique_id=1952792227]
 position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_g6k8r")
+
+[node name="CollisionCrouch" type="CollisionShape2D" parent="." unique_id=1622524601]
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_kqu6x")
+disabled = true
 
 [node name="States" type="Node" parent="." unique_id=543416060]
 
@@ -38,6 +48,7 @@ script = ExtResource("2_g1dw6")
 [node name="Jump" type="Node" parent="States" unique_id=331766266]
 unique_name_in_owner = true
 script = ExtResource("4_qjkh3")
+jump_velocity = 375.0
 
 [node name="Fall" type="Node" parent="States" unique_id=1400642928]
 unique_name_in_owner = true
@@ -49,10 +60,15 @@ unique_name_in_owner = true
 script = ExtResource("6_g6k8r")
 
 [node name="Label" type="Label" parent="." unique_id=1370599494]
-offset_left = -27.0
-offset_top = -52.0
-offset_right = 28.0
-offset_bottom = -29.0
+offset_left = -41.0
+offset_top = -60.0
+offset_right = 41.0
+offset_bottom = -34.0
+theme_override_font_sizes/font_size = 16
 text = "Label"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="OneWayPlatformRaycast" type="RayCast2D" parent="." unique_id=1386304277]
+target_position = Vector2(0, 10)
+collision_mask = 2
