@@ -67,8 +67,8 @@ texture = SubResource("GradientTexture2D_rupst")
 shape = SubResource("RectangleShape2D_wt17y")
 
 [node name="Sprite2D5" type="Sprite2D" parent="." unique_id=557028478]
-position = Vector2(159, 287)
-scale = Vector2(2.6718752, 0.4062498)
+position = Vector2(155.75, 287)
+scale = Vector2(2.773438, 0.4062498)
 texture = SubResource("GradientTexture2D_wt17y")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D5" unique_id=632238504]
@@ -76,6 +76,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D5/StaticBody2D" unique_id=2060945830]
+scale = Vector2(1.0000001, 1)
 shape = SubResource("RectangleShape2D_rupst")
 one_way_collision = true
 

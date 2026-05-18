@@ -7,22 +7,25 @@ func init() -> void:
 	pass
 
 func enter() -> void:
+	player.animation_player.play("crouch")
 	player.collision_stand.disabled = true#不可用
 	player.collision_crouch.disabled = false#可用
-	player.sprite_2d.scale.y = 0.5#缩放为0.5
-	player.sprite_2d.position.y = -8
 	pass
 
 func exit() -> void:
 	player.collision_stand.disabled = false#可用
 	player.collision_crouch.disabled = true#不可用
 	player.sprite_2d.scale.y = 1#回复
-	player.sprite_2d.position.y = -16
+	player.sprite_2d.position.y = -21
 	pass
 
 func handle_input( _event: InputEvent) -> PlayerState:
 	if _event.is_action_pressed("jump"):
-		if player.one_way_platform_raycast.is_colliding():
+		#if player.one_way_platform_raycast.is_colliding():
+		player.one_way_platform_shape_cast_2d.force_shapecast_update()
+		#禁用的时候也立马强制在这一帧判断
+		if player.one_way_platform_shape_cast_2d.is_colliding():
+			#不用射线，改用矩形了
 			player.position.y += 4#如果这个检测器检测到，就向下压几个像素
 			return fall
 		return jump

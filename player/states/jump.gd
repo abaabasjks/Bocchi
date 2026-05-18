@@ -7,6 +7,7 @@ func init() -> void:
 	pass
 
 func enter() -> void:
+	player.animation_player.play("jump")
 	player.add_debug_indicator(Color.GREEN)
 	player.velocity.y = -jump_velocity
 	pass
@@ -18,6 +19,8 @@ func exit() -> void:
 func handle_input( _event: InputEvent) -> PlayerState:
 	if _event.is_action_released("jump"):
 		player.velocity.y *= 0.5
+		#松开跳跃键，速度变为0.5，并且立刻下落状态
+		#但是角色还是会向上飞一点点
 		return fall
 	return next_state
 

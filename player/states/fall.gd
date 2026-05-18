@@ -1,7 +1,7 @@
 class_name PlayerFallState
 extends PlayerState
 
-@export var fall_gravity_mulitplier: float = 1.165
+@export var fall_gravity_multiplier: float = 1.165
 @export var coyote_time: float = 0.4
 @export var jump_buffer_time: float = 0.2
 
@@ -12,7 +12,7 @@ func init() -> void:
 	pass
 
 func enter() -> void:
-	player.gravity_mulitplier = fall_gravity_mulitplier
+	player.gravity_multiplier = fall_gravity_multiplier
 	if player.previous_state == jump:
 		coyote_timer = 0
 	else: 
@@ -20,7 +20,7 @@ func enter() -> void:
 	pass
 
 func exit() -> void:
-	player.gravity_mulitplier = 1.0
+	player.gravity_multiplier = 1.0
 	pass
 
 func handle_input( _event: InputEvent) -> PlayerState:

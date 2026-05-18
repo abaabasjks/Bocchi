@@ -8,6 +8,9 @@ const DEBUG_JUMP_INDICATOR = preload("uid://bh5w0awpjg4w7")
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
 @onready var one_way_platform_raycast: RayCast2D = $OneWayPlatformRaycast
+@onready var one_way_platform_shape_cast_2d: ShapeCast2D = $OneWayPlatformShapeCast2D
+
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 #endregion 
 
@@ -26,7 +29,7 @@ var previous_state: PlayerState:#先前状态
 #region /// Standard Variables
 var direction: Vector2 = Vector2.ZERO
 var gravity: float = 980
-var gravity_mulitplier: float = 1.0
+var gravity_multiplier: float = 1.0
 #endregion
 
 func _ready() -> void:
@@ -44,7 +47,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func _physics_process(_delta: float) -> void:
-	velocity.y += gravity * _delta * gravity_mulitplier
+	velocity.y += gravity * _delta * gravity_multiplier
 	move_and_slide()
 	change_state(current_state.physics_process(_delta))
 	pass
@@ -91,12 +94,17 @@ func change_state(new_state: PlayerState) -> void:
 func update_direction() -> void:#更新方向
 	var prev_direction: Vector2 = direction
 	
-	#direction = Input.get_vector("left", "right", "up", "down")
 	var x_axis = Input.get_axis("left", "right")#区别在于在输入映射的时候会剔除0.2(死区)
 	var y_axis = Input.get_axis("up", "down")
 	direction = Vector2(x_axis, y_axis)
-	
+	#翻转角色
+	if prev_direction.x != direction.x:
+		if direction.x < 0: 
+			sprite_2d.flip_h = true
+		elif direction.x > 0:
+			sprite_2d.flip_h = false
 	pass
+
 func add_debug_indicator(color: Color = Color.RED) -> void:
 	var d: Node2D = DEBUG_JUMP_INDICATOR.instantiate()
 	get_tree().root.add_child(d)
