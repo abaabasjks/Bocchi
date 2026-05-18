@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bopsmh4lgh1ps" path="res://player/scripts/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://ef41bg2pdayw" path="res://player/states/idle.gd" id="1_rkbax"]
 [ext_resource type="Script" uid="uid://xphwxm3yam5c" path="res://player/states/run.gd" id="2_g1dw6"]
+[ext_resource type="Script" uid="uid://4jwiy4od3ly1" path="res://player/states/jump.gd" id="4_qjkh3"]
+[ext_resource type="Script" uid="uid://cumafvhuqvceo" path="res://player/states/fall.gd" id="5_g6k8r"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rkbax"]
 size = Vector2(32, 32)
@@ -15,9 +17,11 @@ script = ExtResource("1_oul6g")
 move_speed = 150.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=517147044]
+position = Vector2(0, -16)
 texture = SubResource("PlaceholderTexture2D_rkbax")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1952792227]
+position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_kqu6x")
 
 [node name="States" type="Node" parent="." unique_id=543416060]
@@ -31,14 +35,18 @@ unique_name_in_owner = true
 script = ExtResource("2_g1dw6")
 
 [node name="Jump" type="Node" parent="States" unique_id=331766266]
+unique_name_in_owner = true
+script = ExtResource("4_qjkh3")
 
 [node name="Fall" type="Node" parent="States" unique_id=1400642928]
+unique_name_in_owner = true
+script = ExtResource("5_g6k8r")
 
 [node name="Label" type="Label" parent="." unique_id=1370599494]
 offset_left = -27.0
-offset_top = -42.0
+offset_top = -52.0
 offset_right = 28.0
-offset_bottom = -19.0
+offset_bottom = -29.0
 text = "Label"
 horizontal_alignment = 1
 vertical_alignment = 1
