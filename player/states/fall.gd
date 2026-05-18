@@ -12,6 +12,9 @@ func init() -> void:
 	pass
 
 func enter() -> void:
+	player.animation_player.play("jump")
+	#播放动画，但是直接按下暂停键
+	player.animation_player.pause()
 	player.gravity_multiplier = fall_gravity_multiplier
 	if player.previous_state == jump:
 		coyote_timer = 0
@@ -36,6 +39,7 @@ func handle_input( _event: InputEvent) -> PlayerState:
 func process(_delta: float) -> PlayerState:
 	coyote_timer -= _delta
 	buffer_timer -= _delta
+	set_jump_frame()
 	return next_state
 
 func physics_process(_delta: float) -> PlayerState:
@@ -46,3 +50,9 @@ func physics_process(_delta: float) -> PlayerState:
 		return idle
 	player.velocity.x = player.direction.x * player.move_speed
 	return next_state
+
+func set_jump_frame() -> void:
+	#按照角色的速度映射到0.5-1上，然后判断这个动画到底要播放哪一帧帧
+	var frame: float = remap(player.velocity.y, 0.0, player.max_fall_velocity, 0.5, 1.0)
+	player.animation_player.seek(frame, true)
+	pass
