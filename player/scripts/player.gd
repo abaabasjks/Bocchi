@@ -20,6 +20,7 @@ var previous_state: PlayerState:#先前状态
 #region /// Standard Variables
 var direction: Vector2 = Vector2.ZERO
 var gravity: float = 980
+var gravity_mulitplier: float = 1.0
 #endregion
 
 func _ready() -> void:
@@ -37,7 +38,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func _physics_process(_delta: float) -> void:
-	velocity.y += gravity * _delta
+	velocity.y += gravity * _delta * gravity_mulitplier
 	move_and_slide()
 	change_state(current_state.physics_process(_delta))
 	pass

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://xphwxm3yam5c" path="res://player/states/run.gd" id="2_g1dw6"]
 [ext_resource type="Script" uid="uid://4jwiy4od3ly1" path="res://player/states/jump.gd" id="4_qjkh3"]
 [ext_resource type="Script" uid="uid://cumafvhuqvceo" path="res://player/states/fall.gd" id="5_g6k8r"]
+[ext_resource type="Script" uid="uid://smnce360fy7m" path="res://player/states/crouch.gd" id="6_g6k8r"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rkbax"]
 size = Vector2(32, 32)
@@ -41,6 +42,11 @@ script = ExtResource("4_qjkh3")
 [node name="Fall" type="Node" parent="States" unique_id=1400642928]
 unique_name_in_owner = true
 script = ExtResource("5_g6k8r")
+coyote_time = 0.15
+
+[node name="Crouch" type="Node" parent="States" unique_id=784860982]
+unique_name_in_owner = true
+script = ExtResource("6_g6k8r")
 
 [node name="Label" type="Label" parent="." unique_id=1370599494]
 offset_left = -27.0
