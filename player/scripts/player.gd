@@ -7,7 +7,6 @@ const DEBUG_JUMP_INDICATOR = preload("uid://bh5w0awpjg4w7")
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
-@onready var one_way_platform_raycast: RayCast2D = $OneWayPlatformRaycast
 @onready var one_way_platform_shape_cast_2d: ShapeCast2D = $OneWayPlatformShapeCast2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer

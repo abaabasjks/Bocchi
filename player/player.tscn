@@ -169,11 +169,6 @@ text = "Label"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OneWayPlatformRaycast" type="RayCast2D" parent="." unique_id=1386304277]
-visible = false
-target_position = Vector2(0, 15)
-collision_mask = 2
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=994493357]
 libraries/ = SubResource("AnimationLibrary_2ieo8")
 autoplay = &"idle"
@@ -184,3 +179,6 @@ shape = SubResource("RectangleShape2D_g6k8r")
 target_position = Vector2(0, 3)
 max_results = 12
 collision_mask = 2
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=376241422]
+position = Vector2(0, -33)
