@@ -26,7 +26,7 @@ func handle_input( _event: InputEvent) -> PlayerState:
 		#禁用的时候也立马强制在这一帧判断
 		if player.one_way_platform_shape_cast_2d.is_colliding():
 			#不用射线，改用矩形了
-			player.position.y += 4#如果这个检测器检测到，就向下压几个像素
+			player.position.y += 10#如果这个检测器检测到，就向下压几个像素
 			return fall
 		return jump
 	return next_state

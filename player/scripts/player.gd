@@ -34,7 +34,10 @@ var gravity_multiplier: float = 1.0
 
 func _ready() -> void:
 	#初始化数组和所有状态
+	if get_tree().get_first_node_in_group("Player") != self:
+		self.queue_free()
 	initialize_states()
+	self.call_deferred("reparent", get_tree().root)
 	pass
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -35,10 +35,10 @@ func _draw() -> void:
 
 func _on_width_changed(_new_width: int) -> void:
 	width = _new_width#设置为新值
-	queue_redraw()
+	queue_redraw()#重新绘制
 	pass
 
 func _on_height_changed(_new_height: int) -> void:
 	height = _new_height#设置为新值
-	queue_redraw()
+	queue_redraw()#重新绘制
 	pass
