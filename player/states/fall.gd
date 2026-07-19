@@ -5,6 +5,7 @@ extends PlayerState
 @export var coyote_time: float = 0.4
 @export var jump_buffer_time: float = 0.2
 
+#上面是两个预设的时间，下面是两个计时器，每次都把计时器设置为预定时间
 var coyote_timer: float = 0
 var buffer_timer: float = 0
 
@@ -15,15 +16,20 @@ func enter() -> void:
 	player.animation_player.play("jump")
 	#播放动画，但是直接按下暂停键
 	player.animation_player.pause()
+	#这里是为了游戏手感，更快的落下
 	player.gravity_multiplier = fall_gravity_multiplier
+	#如果之前的状态是跳跃，那么就不设置郊狼时间
 	if player.previous_state == jump:
 		coyote_timer = 0
+	#只有之前状态不是跳跃状态(Idle或者Run),才会启动郊狼时间
 	else: 
 		coyote_timer = coyote_time
 	pass
 
 func exit() -> void:
 	player.gravity_multiplier = 1.0
+	#防止刚好跳到平台上不受控制的二连跳
+	buffer_timer = 0
 	pass
 
 func handle_input( _event: InputEvent) -> PlayerState:

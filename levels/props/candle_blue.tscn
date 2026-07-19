@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://d4c7e0q2kekdb"]
+
+[ext_resource type="Texture2D" uid="uid://cogxj8lpwiq28" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/candle_blue_2/candle_blue_2_1.png" id="1_pm27q"]
+[ext_resource type="Texture2D" uid="uid://bb528cut1hoyx" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/candle_blue_2/candle_blue_2_2.png" id="2_52mmj"]
+[ext_resource type="Texture2D" uid="uid://bpu0kjlvwscsq" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/candle_blue_2/candle_blue_2_3.png" id="3_4cp7o"]
+[ext_resource type="Texture2D" uid="uid://b8hkgvao10pn6" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/candle_blue_2/candle_blue_2_4.png" id="4_cnfk4"]
+[ext_resource type="Texture2D" uid="uid://ddd6vh1esxwlg" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/candle_blue_2/candle_blue_2_5.png" id="5_1ht4i"]
+[ext_resource type="Texture2D" uid="uid://s5ucoyyx7ywi" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/candle_blue_2/candle_blue_2_6.png" id="6_h42fk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m5pun"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pm27q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_52mmj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4cp7o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cnfk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1ht4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h42fk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="CandleBlue" type="AnimatedSprite2D" unique_id=2143567132]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_m5pun")
+autoplay = "default"
+frame = 4
+frame_progress = 0.13914287

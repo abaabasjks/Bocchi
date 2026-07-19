@@ -18,6 +18,7 @@ const DEBUG_JUMP_INDICATOR = preload("uid://bh5w0awpjg4w7")
 @export var max_fall_velocity: float = 500
 #endregion
 
+#状态栈维护一个数组，提供当前状态和上个状态
 #region /// State Machine Variables
 var states: Array[PlayerState]#状态栈
 var current_state: PlayerState:#当前状态
@@ -26,6 +27,7 @@ var previous_state: PlayerState:#先前状态
 	get: return states[1]#要获取的时候直接返回数组的第二个
 #endregion
 
+#常量
 #region /// Standard Variables
 var direction: Vector2 = Vector2.ZERO
 var gravity: float = 980
@@ -37,6 +39,7 @@ func _ready() -> void:
 	if get_tree().get_first_node_in_group("Player") != self:
 		self.queue_free()
 	initialize_states()
+	#这里是安排到全局根节点，防止切换场景的时候一起销毁
 	self.call_deferred("reparent", get_tree().root)
 	pass
 
@@ -51,6 +54,7 @@ func _process(_delta: float) -> void:
 
 func _physics_process(_delta: float) -> void:
 	velocity.y += gravity * _delta * gravity_multiplier
+	#这里是限制角色的速度
 	velocity.y = clampf(velocity.y, -1000, max_fall_velocity)
 	move_and_slide()
 	change_state(current_state.physics_process(_delta))
@@ -62,6 +66,7 @@ func initialize_states() -> void:
 	for c in $States.get_children():
 		if c is PlayerState:
 			states.append(c)
+			#每一个状态的player都指向这个Player
 			c.player = self
 		pass
 	
@@ -74,6 +79,7 @@ func initialize_states() -> void:
 	
 	#切换到现在这个状态并触发他的enter
 	change_state(current_state)
+	#这里又调用一次是因为在执行change_state的时候没有初始化完成，执行了一个空的
 	current_state.enter()
 	$Label.text = current_state.name
 	#建立我们的第一个状态
@@ -102,6 +108,9 @@ func update_direction() -> void:#更新方向
 	var y_axis = Input.get_axis("up", "down")
 	direction = Vector2(x_axis, y_axis)
 	#翻转角色
+	#每一帧都在检测
+	#这里有两个方向，现在的和之前的，
+	#如果现在方向和之前的不一样就表示需要翻转
 	if prev_direction.x != direction.x:
 		if direction.x < 0: 
 			sprite_2d.flip_h = true
@@ -113,6 +122,7 @@ func add_debug_indicator(color: Color = Color.RED) -> void:
 	var d: Node2D = DEBUG_JUMP_INDICATOR.instantiate()
 	get_tree().root.add_child(d)
 	d.global_position = global_position
+	#modulate是节点的颜色调制，这个对象的颜色，默认是红色的
 	d.modulate = color
 	await get_tree().create_timer(3).timeout
 	d.queue_free()

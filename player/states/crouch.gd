@@ -8,6 +8,7 @@ func init() -> void:
 
 func enter() -> void:
 	player.animation_player.play("crouch")
+	#在进入的时候关闭一般的碰撞体，打开下蹲碰撞体，退出的时候打开
 	player.collision_stand.disabled = true#不可用
 	player.collision_crouch.disabled = false#可用
 	pass

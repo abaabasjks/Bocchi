@@ -4,12 +4,16 @@ signal load_scene_started
 signal new_scene_ready(_target_name: String, offset: Vector2)
 signal load_scene_finished
 
+#总结来说，就是旧场景销毁掉，但是SceneManager会存新场景的名称
+#并且会加载新场景，新场景里面找到目标传送门和偏移
 @onready var fade: Control = $Fade
 
 
 func _ready() -> void:
 	fade.visible = false
 	await get_tree().process_frame
+	#这里是因为第一个场景不是脚本控制加载的，
+	#所以不会链接信号和方法
 	load_scene_finished.emit()
 	pass
 
@@ -45,15 +49,17 @@ func transition_scene(_new_scene: String, _target_area_name: String, player_offs
 	
 	pass
 
+#这里是要等这个事情结束，所以改为返回一个Signal信号
 func fade_screen(from: Vector2, to: Vector2) -> Signal:
 	fade.position = from
 	var tween: Tween = create_tween()
+	#修改fade，的position属性，到，to的位置，用时0.2秒
 	tween.tween_property(fade, "position", to, 0.2)
 	return tween.finished
 
 func get_fade_pos(_dir: String) -> Vector2:
-	var pos: Vector2 = Vector2(640*2, 360*2)
-	
+	var pos: Vector2 = Vector2(480*2, 270*2)
+	#这里是根据那个传送点的方向，判断这个淡入淡出的方向
 	match _dir:
 		"left":
 			pos *= Vector2(-1, 0)

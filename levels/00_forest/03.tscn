@@ -17,5 +17,4 @@ tile_set = ExtResource("1_biydo")
 position = Vector2(-576, 455)
 size = 6
 location = 0
-target_level = "uid://75gxood1wi6s"
 target_area_name = "LevelTransition2"

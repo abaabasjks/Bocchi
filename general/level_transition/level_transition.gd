@@ -5,29 +5,36 @@ extends Node2D
 
 enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 
+#范围在2-12，但是可以超出
+#每次更改，编辑器会把值给这里接收，然后这里把size的值改成value，同时修改边界
 @export_range(2, 12, 1, "or_greater") var size: int = 2:
 	set(value):
 		size = value
 		apply_area_settings()
-
+#这里也是一样，上面更改数目，这里更改方向
 @export var location: SIDE = SIDE.BOTTOM:
 	set(value):
 		location = value
 		apply_area_settings()
 
+#这里的*.tscn是限制只可以选择这个后缀的文件
 @export_file("*.tscn") var target_level: String = ""
+#这里是因为可能有很多个LevelTransition，定位到独属的那个LevelTransition
 @export var target_area_name: String = "LevelTransition"
 
+#引用自己下面的Area检测区域
 @onready var area_2d: Area2D = $Area2D
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
+	#这里是接听SceneManager的信号，当SceneManager发送这个信号的时候就执行对应的方法
 	SceneManager.new_scene_ready.connect(_on_new_scene_ready)
 	SceneManager.load_scene_finished.connect(_on_load_scene_finished)
 
 func _on_player_entered(_n: Node2D) -> void:
 	#get_tree().change_scene_to_file(target_level)
+	#要知道，场景，场景的哪一个LevelTransition，角色偏移，角色的朝向
 	SceneManager.transition_scene(target_level, target_area_name, get_offset(_n), get_transition_direction())
 	pass
 
@@ -41,10 +48,15 @@ func _on_new_scene_ready(_target_name: String, _offset: Vector2) -> void:
 	pass
 
 func _on_load_scene_finished() -> void:
-	area_2d.monitoring = false#这里是因为在加载新的场景的时候，人物的碰撞体会短暂在上一个场景的位置(两帧的时间)
+	area_2d.monitoring = false
+	#这里是因为在加载新的场景的时候，
+	#人物的碰撞体会短暂在上一个场景的位置(两帧的时间)
 	#所以有可能跳过10，11，12中间的11，在10和12之间切换
-	area_2d.body_entered.connect(_on_player_entered)
 	
+	#移动到这里是防止奇怪的跳转
+	area_2d.body_entered.connect(_on_player_entered)
+	#第一帧是给时间完成场景的切换
+	#第二帧是安全缓冲
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	
@@ -76,6 +88,7 @@ func get_offset(player: Node2D) -> Vector2:
 	
 	if location == SIDE.LEFT or location == SIDE.RIGHT:
 		offset.y = player_pos.y - self.global_position.y
+		#玩家的y坐标-自己的全局坐标
 		if location == SIDE.LEFT:
 			offset.x = -12
 		else:
@@ -83,7 +96,7 @@ func get_offset(player: Node2D) -> Vector2:
 	else:
 		offset.x = player_pos.x - self.global_position.x
 		if location == SIDE.TOP:
-			offset.y = -45
+			offset.y = -3
 		else:
 			offset.y = 45
 	return offset
