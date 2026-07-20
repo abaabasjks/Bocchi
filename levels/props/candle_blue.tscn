@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b8hkgvao10pn6" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/candle_blue_2/candle_blue_2_4.png" id="4_cnfk4"]
 [ext_resource type="Texture2D" uid="uid://ddd6vh1esxwlg" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/candle_blue_2/candle_blue_2_5.png" id="5_1ht4i"]
 [ext_resource type="Texture2D" uid="uid://s5ucoyyx7ywi" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/candle_blue_2/candle_blue_2_6.png" id="6_h42fk"]
+[ext_resource type="Script" uid="uid://bx5bix3oa6ala" path="res://general/scripts/light_flicker.gd" id="7_52mmj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m5pun"]
 animations = [{
@@ -33,9 +34,26 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_pm27q"]
+colors = PackedColorArray(0, 0.30263233, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_52mmj"]
+gradient = SubResource("Gradient_pm27q")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
 [node name="CandleBlue" type="AnimatedSprite2D" unique_id=2143567132]
-position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_m5pun")
 autoplay = "default"
 frame = 4
 frame_progress = 0.13914287
+offset = Vector2(0, -12)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=742462232]
+position = Vector2(0, -13)
+energy = 0.7
+texture = SubResource("GradientTexture2D_52mmj")
+script = ExtResource("7_52mmj")
+flicker_intensity = 0.2
+flicker_frequency = 0.5

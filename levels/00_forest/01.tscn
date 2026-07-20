@@ -211,11 +211,68 @@ flip_h = true
 [node name="Node2D" parent="props" unique_id=547439100 instance=ExtResource("7_72pnk")]
 position = Vector2(435, 194)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1533358028]
+[node name="Parallax2D6" type="Parallax2D" parent="." unique_id=792067197]
+scroll_scale = Vector2(1.1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D6" unique_id=1533358028]
 modulate = Color(1.1638972, 0.9554805, 0.3664772, 0.2509804)
 z_index = 4
 material = SubResource("CanvasItemMaterial_8sv46")
-position = Vector2(308, -78.99997)
+position = Vector2(157.79892, -96.93274)
 rotation = 0.1774477
+scale = Vector2(0.39358285, 0.99999994)
+texture = ExtResource("8_vdj2u")
+offset = Vector2(0, 256)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D6" unique_id=612952434]
+modulate = Color(1.1638972, 0.9554805, 0.3664772, 0.12156863)
+z_index = 4
+material = SubResource("CanvasItemMaterial_8sv46")
+position = Vector2(529, -105.99999)
+rotation = 0.28758898
+scale = Vector2(0.58115715, 0.99999994)
+texture = ExtResource("8_vdj2u")
+offset = Vector2(0, 256)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax2D6" unique_id=2050046589]
+modulate = Color(1.1638972, 0.9554805, 0.3664772, 0.105882354)
+z_index = 4
+material = SubResource("CanvasItemMaterial_8sv46")
+position = Vector2(831.025, -114.70763)
+rotation = 0.34970474
+scale = Vector2(0.6374763, 0.99999994)
+texture = ExtResource("8_vdj2u")
+offset = Vector2(0, 256)
+
+[node name="Parallax2D7" type="Parallax2D" parent="." unique_id=931219326]
+scroll_scale = Vector2(1.2, 1)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallax2D7" unique_id=788023894]
+modulate = Color(1.1638972, 0.9554805, 0.3664772, 0.06666667)
+z_index = 4
+material = SubResource("CanvasItemMaterial_8sv46")
+position = Vector2(158.00002, -111.00001)
+rotation = 0.1774477
+scale = Vector2(1.1450968, 0.9999999)
+texture = ExtResource("8_vdj2u")
+offset = Vector2(0, 256)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Parallax2D7" unique_id=1249926742]
+modulate = Color(1.1638972, 0.9554805, 0.3664772, 0.06666667)
+z_index = 4
+material = SubResource("CanvasItemMaterial_8sv46")
+position = Vector2(713, -102)
+rotation = 0.1774477
+scale = Vector2(1.1450968, 0.9999999)
+texture = ExtResource("8_vdj2u")
+offset = Vector2(0, 256)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Parallax2D7" unique_id=563917018]
+modulate = Color(1.1638972, 0.9554805, 0.3664772, 0.06666667)
+z_index = 4
+material = SubResource("CanvasItemMaterial_8sv46")
+position = Vector2(429, -120)
+rotation = 0.1774477
+scale = Vector2(1.1450968, 0.9999999)
 texture = ExtResource("8_vdj2u")
 offset = Vector2(0, 256)
