@@ -28,6 +28,8 @@ enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
+	#这里是游戏运行的时候也会执行一次应用检测范围，保险
+	apply_area_settings()
 	#这里是接听SceneManager的信号，当SceneManager发送这个信号的时候就执行对应的方法
 	SceneManager.new_scene_ready.connect(_on_new_scene_ready)
 	SceneManager.load_scene_finished.connect(_on_load_scene_finished)

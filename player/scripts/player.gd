@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const DEBUG_JUMP_INDICATOR = preload("uid://bh5w0awpjg4w7")
 
+#一些需要的节点
 #region /// On Ready Variables
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_stand: CollisionShape2D = $CollisionStand
@@ -13,6 +14,7 @@ const DEBUG_JUMP_INDICATOR = preload("uid://bh5w0awpjg4w7")
 
 #endregion 
 
+#显示，可以调整的数值
 #region /// Export Variables
 @export var move_speed: float = 100
 @export var max_fall_velocity: float = 500
@@ -25,6 +27,16 @@ var current_state: PlayerState:#当前状态
 	get: return states.front()#要获取的时候直接返回数组的第一个
 var previous_state: PlayerState:#先前状态
 	get: return states[1]#要获取的时候直接返回数组的第二个
+#endregion
+
+#角色的数据
+#region /// player stats
+var hp: float = 20
+var max_hp: float = 20
+var dash: bool = false
+var double_jump: bool = false
+var ground_slam: bool = false
+var morph_roll: bool = false
 #endregion
 
 #常量

@@ -11,12 +11,14 @@ config_version=5
 [application]
 
 config/name="bocchi"
+run/main_scene="uid://cqabvanatmvp1"
 config/features=PackedStringArray("4.6")
 config/icon="uid://b10db7w1jtf3d"
 
 [autoload]
 
 SceneManager="*uid://o6tksc4x46iv"
+SaveManager="*uid://d0wgiy5yg7bv0"
 
 [display]
 

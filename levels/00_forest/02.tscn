@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://d4c7e0q2kekdb" path="res://levels/props/candle_blue.tscn" id="3_lj4o7"]
 [ext_resource type="TileSet" uid="uid://cahj72poevl6p" path="res://levels/tilesets/forgotten_forest.tres" id="3_o5ap7"]
 [ext_resource type="PackedScene" uid="uid://ccshs22gaftle" path="res://general/level_transition/LevelTransition.tscn" id="3_s2tn3"]
-[ext_resource type="PackedScene" uid="uid://dddopdb3yc3iw" path="res://player/player.tscn" id="4_s2tn3"]
 [ext_resource type="TileSet" uid="uid://pm6q3mryj5tp" path="res://levels/tilesets/world.tres" id="5_o5ap7"]
 [ext_resource type="PackedScene" uid="uid://cnwevwr8gmyyp" path="res://levels/props/coin.tscn" id="7_152a0"]
 [ext_resource type="PackedScene" uid="uid://d13x2r56066eb" path="res://levels/props/torch.tscn" id="8_yy75x"]
+[ext_resource type="PackedScene" uid="uid://bvlu10jloafsd" path="res://general/player_spawn/player_spawn.tscn" id="10_7fi1v"]
 [ext_resource type="Texture2D" uid="uid://hy326hn5tm5t" path="res://levels/tilesets/sprites/light_stream.jpg" id="10_ns032"]
 
 [sub_resource type="Gradient" id="Gradient_qmxb0"]
@@ -26,9 +26,6 @@ blend_mode = 1
 light_mode = 1
 
 [node name="02" type="Node2D" unique_id=453937968]
-
-[node name="Player" parent="." unique_id=219147646 instance=ExtResource("4_s2tn3")]
-position = Vector2(754, 338)
 
 [node name="LevelBounds" type="Node2D" parent="." unique_id=1261699190]
 z_index = 256
@@ -308,3 +305,6 @@ rotation = 0.5282613
 scale = Vector2(1.1450968, 0.9999999)
 texture = ExtResource("10_ns032")
 offset = Vector2(0, 256)
+
+[node name="PlayerSpawn" parent="." unique_id=2061105132 instance=ExtResource("10_7fi1v")]
+position = Vector2(106, 325)

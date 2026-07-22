@@ -3,11 +3,13 @@ extends CanvasLayer
 signal load_scene_started
 signal new_scene_ready(_target_name: String, offset: Vector2)
 signal load_scene_finished
+signal scene_entered(uid: String)
 
 #总结来说，就是旧场景销毁掉，但是SceneManager会存新场景的名称
 #并且会加载新场景，新场景里面找到目标传送门和偏移
 @onready var fade: Control = $Fade
 
+var current_scene_uid: String
 
 func _ready() -> void:
 	fade.visible = false
@@ -34,11 +36,15 @@ func transition_scene(_new_scene: String, _target_area_name: String, player_offs
 	#await get_tree().process_frame
 	
 	get_tree().change_scene_to_file(_new_scene)
+	#这里是把目的的路径转化成UID存储起来
+	current_scene_uid = ResourceUID.path_to_uid(_new_scene)
+	scene_entered.emit(current_scene_uid)
 	
 	await get_tree().scene_changed
 	
 	new_scene_ready.emit(_target_area_name, player_offset)
 	
+	await get_tree().process_frame
 	#fade out
 	await fade_screen(Vector2.ZERO, -fade_pos)
 	
