@@ -308,3 +308,9 @@ offset = Vector2(0, 256)
 
 [node name="PlayerSpawn" parent="." unique_id=2061105132 instance=ExtResource("10_7fi1v")]
 position = Vector2(106, 325)
+
+[node name="LevelTransition2" parent="." unique_id=386446208 instance=ExtResource("3_s2tn3")]
+position = Vector2(966, 325)
+size = 10
+location = 1
+target_level = "uid://bb41fp0em2p7e"
