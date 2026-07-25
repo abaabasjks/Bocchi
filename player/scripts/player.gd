@@ -31,8 +31,16 @@ var previous_state: PlayerState:#先前状态
 
 #角色的数据
 #region /// player stats
-var hp: float = 20
-var max_hp: float = 20
+#很厉害的想法，直接在，当hp和max_hp修改的时候，发送信号
+#而不是写一个方法
+var hp: float = 20:
+	set(value):
+		hp = clampf(value, 0, max_hp)
+		Messages.player_health_changed.emit(hp, max_hp)
+var max_hp: float = 20:
+	set(value):
+		max_hp = value
+		Messages.player_health_changed.emit(hp, max_hp)
 var dash: bool = false
 var double_jump: bool = false
 var ground_slam: bool = false
@@ -60,6 +68,19 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("action"):
 		Messages.player_interacted.emit(self)
+	
+	#if event is InputEventKey and event.pressed:
+		#if event.keycode == KEY_MINUS:
+			#if Input.is_key_pressed(KEY_SHIFT):
+				#max_hp -= 2
+			#else:
+				#hp -= 2
+		#elif event.keycode == KEY_EQUAL:
+			#if Input.is_key_pressed(KEY_SHIFT):
+				#max_hp += 2
+			#else:
+				#hp += 2
+	
 	change_state(current_state.handle_input(event))
 
 	pass

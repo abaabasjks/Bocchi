@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://357eb8wwbp57"]
+
+[ext_resource type="Texture2D" uid="uid://bru0hxoenp4ha" path="res://00_global/player_hud/health_bar_frame.png" id="1_hv14i"]
+[ext_resource type="Script" uid="uid://swogkjn3qy17" path="res://00_global/player_hud/player_hud.gd" id="1_vb1bs"]
+
+[sub_resource type="Gradient" id="Gradient_vb1bs"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_26715"]
+gradient = SubResource("Gradient_vb1bs")
+height = 16
+
+[sub_resource type="Gradient" id="Gradient_tdgrf"]
+colors = PackedColorArray(0.8627451, 0.34117648, 0.34117648, 1, 0.9019608, 0.49803922, 0.49803922, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4jtec"]
+gradient = SubResource("Gradient_tdgrf")
+
+[node name="PlayerHud" type="CanvasLayer" unique_id=1971178034]
+process_mode = 3
+layer = 2
+script = ExtResource("1_vb1bs")
+
+[node name="Control" type="Control" parent="." unique_id=1316044639]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HpMarginContainer" type="MarginContainer" parent="Control" unique_id=1221812986]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 103.0
+offset_bottom = 36.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/HpMarginContainer" unique_id=1765640981]
+layout_mode = 2
+texture = ExtResource("1_hv14i")
+patch_margin_left = 27
+patch_margin_right = 7
+axis_stretch_horizontal = 1
+
+[node name="HpBar" type="TextureProgressBar" parent="Control/HpMarginContainer/NinePatchRect" unique_id=376177722]
+unique_name_in_owner = true
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 5.0
+offset_right = -3.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 35.0
+rounded = true
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_26715")
+texture_progress = SubResource("GradientTexture2D_4jtec")

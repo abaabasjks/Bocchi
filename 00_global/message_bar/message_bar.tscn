@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://ci8qp7hrob44w"]
+
+[ext_resource type="Texture2D" uid="uid://c56e8kuab04ww" path="res://00_global/message_bar/Premade dialog box small.png" id="1_p4f4a"]
+
+[node name="MessageBar" type="CanvasLayer" unique_id=827310638]
+
+[node name="Control" type="Control" parent="." unique_id=264105778]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MeaasgeMarginContainer" type="MarginContainer" parent="Control" unique_id=1077681712]
+custom_minimum_size = Vector2(170, 64)
+layout_mode = 1
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 213.0
+offset_bottom = 104.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/MeaasgeMarginContainer" unique_id=172921404]
+layout_mode = 2
+texture = ExtResource("1_p4f4a")
+patch_margin_left = 132
+patch_margin_right = 73
+axis_stretch_horizontal = 1
+
+[node name="Label" type="Label" parent="Control/MeaasgeMarginContainer/NinePatchRect" unique_id=422918467]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 63.0
+offset_top = 20.0
+offset_right = -13.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "猪猪猪猪猪猪猪猪"
+horizontal_alignment = 1
+vertical_alignment = 1

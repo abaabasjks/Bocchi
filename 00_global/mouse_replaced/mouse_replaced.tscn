@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://nnhr3jt3umsr"]
+
+[ext_resource type="Script" uid="uid://b311gupcg6jpf" path="res://00_global/mouse_replaced/mouse_replaced.gd" id="1_g8o8i"]
+[ext_resource type="Texture2D" uid="uid://dj3thkjoxh60x" path="res://00_global/mouse_replaced/Catpaw pointing Mouse icon.png" id="2_hpja0"]
+
+[node name="MouseReplaced" type="Node2D" unique_id=1139690073]
+script = ExtResource("1_g8o8i")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=8532957]
+position = Vector2(0, -5)
+texture = ExtResource("2_hpja0")
