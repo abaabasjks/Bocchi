@@ -21,16 +21,18 @@ func _on_player_exited(_n: Node2D) -> void:
 	Messages.player_interacted.disconnect(_on_player_interacted)
 	Messages.input_hint_changed.emit("")
 
-func _on_player_interacted(player: Player) -> void:
+func _on_player_interacted(_player: Player) -> void:
 	print("这是")
 	#这里要保存游戏
 	#治疗玩家
 	#加入动画
 	#加入音效
+	
+	#这里要先治愈角色，再保存游戏
+	Messages.player_healed.emit(999)
 	SaveManager.save_game()
 	
 	animation_player.play("game_saved")
 	animation_player.seek(0)
 	
-	Messages.player_healed.emit(999)
 	pass

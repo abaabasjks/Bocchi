@@ -2,6 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://bwf0y5kynusyc" path="res://levels/tilesets/dungeon.tres" id="1_biydo"]
 [ext_resource type="PackedScene" uid="uid://bvlu10jloafsd" path="res://general/player_spawn/player_spawn.tscn" id="2_vv2jw"]
+[ext_resource type="PackedScene" uid="uid://dfbu0rv00ypjy" path="res://levels/props/candle_big.tscn" id="3_c06eb"]
 [ext_resource type="Script" uid="uid://cj35wmptptsr3" path="res://general/scripts/level_bounds.gd" id="3_vv2jw"]
 [ext_resource type="PackedScene" uid="uid://ccshs22gaftle" path="res://general/level_transition/LevelTransition.tscn" id="4_r7adf"]
 [ext_resource type="PackedScene" uid="uid://d4c7e0q2kekdb" path="res://levels/props/candle_blue.tscn" id="5_7vwju"]
@@ -43,6 +44,14 @@ position = Vector2(397, 226)
 
 [node name="CandleBlue2" parent="LevelTilemaps/blue_candles" unique_id=994078023 instance=ExtResource("5_7vwju")]
 position = Vector2(85, 226)
+
+[node name="torchs" type="Node2D" parent="LevelTilemaps" unique_id=1478473499]
+
+[node name="CandleBig" parent="LevelTilemaps/torchs" unique_id=936461795 instance=ExtResource("3_c06eb")]
+position = Vector2(366, 156)
+
+[node name="CandleBig2" parent="LevelTilemaps/torchs" unique_id=903885666 instance=ExtResource("3_c06eb")]
+position = Vector2(95, 156)
 
 [node name="SavePoint" parent="." unique_id=564970533 instance=ExtResource("6_nqq0o")]
 position = Vector2(253, 276)

@@ -1,7 +1,71 @@
-[gd_scene format=3 uid="uid://d18cu8ewnw8n3"]
+[gd_scene format=4 uid="uid://d18cu8ewnw8n3"]
+
+[ext_resource type="Texture2D" uid="uid://7moe1oqqeln0" path="res://levels/tilesets/sprites/Medieval_Castle/Background/layer_1.png" id="1_dxpbd"]
+[ext_resource type="Script" uid="uid://dkqelei7ysaha" path="res://title_screen/title_screen.gd" id="1_fk0fn"]
+[ext_resource type="Texture2D" uid="uid://dndh62j2l7pdk" path="res://levels/tilesets/sprites/Medieval_Castle/Background/layer_2.png" id="2_2dq6q"]
+[ext_resource type="TileSet" uid="uid://cahj72poevl6p" path="res://levels/tilesets/forgotten_forest.tres" id="3_2dq6q"]
+[ext_resource type="PackedScene" uid="uid://d13x2r56066eb" path="res://levels/props/torch.tscn" id="4_vbjqi"]
+[ext_resource type="Texture2D" uid="uid://c2tfxs1qdlcvo" path="res://title_screen/metroidvania_logo.png" id="5_0m3ch"]
+
+[sub_resource type="Animation" id="Animation_fk0fn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_oqrgu"]
+resource_name = "loop"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+}
+
+[sub_resource type="Animation" id="Animation_0m3ch"]
+resource_name = "start"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45000002, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fk0fn"]
+_data = {
+&"RESET": SubResource("Animation_fk0fn"),
+&"loop": SubResource("Animation_oqrgu"),
+&"start": SubResource("Animation_0m3ch")
+}
 
 [node name="TitleScreen" type="CanvasLayer" unique_id=1534307992]
 layer = 5
+script = ExtResource("1_fk0fn")
 
 [node name="Control" type="Control" parent="." unique_id=678369534]
 layout_mode = 3
@@ -21,6 +85,157 @@ grow_vertical = 2
 color = Color(0.14486825, 0.14486825, 0.14486825, 1)
 
 [node name="TileMapContainer" type="Control" parent="Control" unique_id=692829359]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelTilemaps" type="Node2D" parent="Control/TileMapContainer" unique_id=327110697]
+position = Vector2(7, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/TileMapContainer/LevelTilemaps" unique_id=197619359]
+position = Vector2(241.00002, 139)
+scale = Vector2(1.55, 1.55)
+texture = ExtResource("1_dxpbd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control/TileMapContainer/LevelTilemaps" unique_id=1495517622]
+position = Vector2(233.99998, 171.99998)
+scale = Vector2(1.55, 1.55)
+texture = ExtResource("2_2dq6q")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Control/TileMapContainer/LevelTilemaps" unique_id=877465308]
+tile_map_data = PackedByteArray("AAD//wcAAgAAAAgAAAD//wgAAgAAAAkAAAAAAAcAAgACAAgAAAAAAAgAAgACAAkAAAABAAcAAgACAAgAAAABAAgAAgACAAkAAAACAAcAAgACAAgAAAACAAgAAgACAAkAAAADAAcAAgACAAgAAAADAAgAAgACAAkAAAAEAAcAAgACAAgAAAAEAAgAAgACAAkAAAAFAAcAAgACAAgAAAAFAAgAAgACAAkAAAAGAAcAAgACAAgAAAAGAAgAAgACAAkAAAAHAAcAAgACAAgAAAAHAAgAAgACAAkAAAAIAAcAAgACAAgAAAAIAAgAAgACAAkAAAAJAAcAAgACAAgAAAAJAAgAAgACAAkAAAAKAAcAAgACAAgAAAAKAAgAAgACAAkAAAALAAcAAgACAAgAAAALAAgAAgACAAkAAAAMAAcAAgACAAgAAAAMAAgAAgACAAkAAAANAAcAAgACAAgAAAANAAgAAgACAAkAAAAOAAcAAgACAAgAAAAOAAgAAgACAAkAAAAPAAcAAgAFAAgAAAAPAAgAAgAFAAkAAAA=")
+tile_set = ExtResource("3_2dq6q")
+
+[node name="Torch" parent="Control/TileMapContainer/LevelTilemaps" unique_id=1228052428 instance=ExtResource("4_vbjqi")]
+position = Vector2(116, 230)
+
+[node name="Torch2" parent="Control/TileMapContainer/LevelTilemaps" unique_id=117313452 instance=ExtResource("4_vbjqi")]
+position = Vector2(355, 229)
+
+[node name="MainMenu" type="VBoxContainer" parent="Control" unique_id=1740538732]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.5
+offset_top = -123.5
+offset_right = 74.5
+offset_bottom = 123.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Logo" type="Control" parent="Control/MainMenu" unique_id=2062891397]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/MainMenu/Logo" unique_id=690502526]
+position = Vector2(0, 73)
+texture = ExtResource("5_0m3ch")
+hframes = 8
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/MainMenu/Logo" unique_id=1721707908]
+libraries/ = SubResource("AnimationLibrary_fk0fn")
+autoplay = &"start"
+
+[node name="NewGameButton" type="Button" parent="Control/MainMenu" unique_id=1618004853]
+unique_name_in_owner = true
+layout_mode = 2
+text = "新的游戏"
+
+[node name="LoadGameButton" type="Button" parent="Control/MainMenu" unique_id=828346600]
+unique_name_in_owner = true
+layout_mode = 2
+text = "加载游戏
+"
+
+[node name="NewGameMenu" type="VBoxContainer" parent="Control" unique_id=1522274292]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -59.0
+offset_right = 77.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/NewGameMenu" unique_id=38669090]
+modulate = Color(0.6745098, 0.19607843, 0.19607843, 1)
+layout_mode = 2
+text = "开始新游戏……"
+horizontal_alignment = 1
+
+[node name="NewSlot01" type="Button" parent="Control/NewGameMenu" unique_id=1395766475]
+unique_name_in_owner = true
+layout_mode = 2
+text = "01. 新游戏"
+
+[node name="NewSlot02" type="Button" parent="Control/NewGameMenu" unique_id=912721354]
+unique_name_in_owner = true
+layout_mode = 2
+text = "02. 新游戏"
+
+[node name="NewSlot03" type="Button" parent="Control/NewGameMenu" unique_id=452705010]
+unique_name_in_owner = true
+layout_mode = 2
+text = "03. 新游戏"
+
+[node name="LoadGameMenu" type="VBoxContainer" parent="Control" unique_id=1282457927]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -72.0
+offset_right = 81.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/LoadGameMenu" unique_id=359939423]
+modulate = Color(0.6745098, 0.19607843, 0.19607843, 1)
+layout_mode = 2
+text = "继续旅程……"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Control/LoadGameMenu" unique_id=1647999324]
+layout_mode = 2
+
+[node name="LoadSlot01" type="Button" parent="Control/LoadGameMenu" unique_id=1016491011]
+unique_name_in_owner = true
+layout_mode = 2
+text = "01. 加载游戏"
+
+[node name="LoadSlot02" type="Button" parent="Control/LoadGameMenu" unique_id=563918524]
+unique_name_in_owner = true
+layout_mode = 2
+text = "02. 加载游戏"
+
+[node name="LoadSlot03" type="Button" parent="Control/LoadGameMenu" unique_id=66606329]
+unique_name_in_owner = true
+layout_mode = 2
+text = "03. 加载游戏"

@@ -4,6 +4,8 @@ extends PlayerState
 @export var fall_gravity_multiplier: float = 1.165
 @export var coyote_time: float = 0.4
 @export var jump_buffer_time: float = 0.2
+@onready var gpu_particles_2d: GPUParticles2D = $"../../GPUParticles2D"
+
 
 #上面是两个预设的时间，下面是两个计时器，每次都把计时器设置为预定时间
 var coyote_timer: float = 0
@@ -30,6 +32,7 @@ func exit() -> void:
 	player.gravity_multiplier = 1.0
 	#防止刚好跳到平台上不受控制的二连跳
 	buffer_timer = 0
+	#gpu_particles_2d.emitting = true
 	pass
 
 func handle_input( _event: InputEvent) -> PlayerState:

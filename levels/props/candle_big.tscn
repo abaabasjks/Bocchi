@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dfbu0rv00ypjy"]
+
+[ext_resource type="Texture2D" uid="uid://d38fvsja0a1jc" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/torch_big/torch_big_1.png" id="1_q015d"]
+[ext_resource type="Texture2D" uid="uid://dm5snevkyhy8r" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/torch_big/torch_big_2.png" id="2_0eaig"]
+[ext_resource type="Texture2D" uid="uid://c1g2l1s6l2ba2" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/torch_big/torch_big_3.png" id="3_c2taf"]
+[ext_resource type="Texture2D" uid="uid://dnn5conp2w2cp" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/torch_big/torch_big_4.png" id="4_emqwo"]
+[ext_resource type="Texture2D" uid="uid://b7ls1pvss2sjp" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/torch_big/torch_big_5.png" id="5_vhgnx"]
+[ext_resource type="Texture2D" uid="uid://cl28k3uh23oqy" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/torch_big/torch_big_6.png" id="6_i7m8x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxq16"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_q015d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0eaig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c2taf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_emqwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vhgnx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_i7m8x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_vobbm"]
+offsets = PackedFloat32Array(0, 0.3323782, 0.6618911, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.76533484, 0.21940207, 1, 1, 0.593794, 0.32024193, 1, 0, 0, 0, 0.7490196)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vswa8"]
+gradient = SubResource("Gradient_vobbm")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="CandleBig" type="AnimatedSprite2D" unique_id=936461795]
+sprite_frames = SubResource("SpriteFrames_uxq16")
+autoplay = "default"
+frame_progress = 0.43508595
+offset = Vector2(0, -21)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=4220946]
+position = Vector2(0, -22)
+energy = 0.8
+texture = SubResource("GradientTexture2D_vswa8")

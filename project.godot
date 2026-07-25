@@ -33,6 +33,10 @@ window/stretch/mode="canvas_items"
 
 Player=""
 
+[gui]
+
+theme/custom_font="uid://ckx28tasdrlsj"
+
 [input]
 
 up={

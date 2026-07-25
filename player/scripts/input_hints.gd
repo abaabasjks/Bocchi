@@ -52,7 +52,8 @@ func get_controller_type(device_id) -> void:
 	elif "nintendo" in n or "switch" in n:
 		controller_type = "xbox"
 	else:
-		controller_type = "unknown"
+		#unknown根本没有对应的图标，会导致游戏崩溃
+		controller_type = "playstation"
 	#这里直接停用了input，意味着后续不可以更换，操作的设备，键鼠->手柄是不可以的
 	set_process_input(false)
 	pass

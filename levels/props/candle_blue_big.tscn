@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://ctonncl1qxvou"]
+
+[ext_resource type="Texture2D" uid="uid://bl3kjtt5614qv" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/torch_big_blue/torch_big_blue_1.png" id="1_6gwu7"]
+[ext_resource type="Texture2D" uid="uid://dsavl0lcdkjg5" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/torch_big_blue/torch_big_blue_2.png" id="2_e2ecl"]
+[ext_resource type="Texture2D" uid="uid://d0nqang4vwx42" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/torch_big_blue/torch_big_blue_3.png" id="3_7o83e"]
+[ext_resource type="Texture2D" uid="uid://bp2hbxibridn8" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/torch_big_blue/torch_big_blue_4.png" id="4_ktnts"]
+[ext_resource type="Texture2D" uid="uid://djg6yxoa0od1h" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/torch_big_blue/torch_big_blue_5.png" id="5_qyvb1"]
+[ext_resource type="Texture2D" uid="uid://b7wvx4jd6r6ot" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/torch_big_blue/torch_big_blue_6.png" id="6_gs5ba"]
+[ext_resource type="Texture2D" uid="uid://c5y7w6vf15248" path="res://levels/tilesets/sprites/Medieval_Castle/Decorations/Animated Decorations/torch_big_blue/torch_big_blue_background.png" id="7_kkqny"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3f5a0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6gwu7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_e2ecl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7o83e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ktnts")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qyvb1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gs5ba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kkqny")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_6gwu7"]
+offsets = PackedFloat32Array(0, 0.2934473, 0.5868946, 1)
+colors = PackedColorArray(0.01935625, 0, 1, 1, 0.535475, 0.52630603, 1, 1, 0.72840273, 0.72304183, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e2ecl"]
+gradient = SubResource("Gradient_6gwu7")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6gwu7"]
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_e2ecl"]
+colors = PackedColorArray(0.16240561, 0.26755023, 1, 1, 0.011114327, 0.033642, 0.15802127, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7o83e"]
+gradient = SubResource("Gradient_e2ecl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ktnts"]
+particle_flag_disable_z = true
+direction = Vector3(1, -20, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 300.0
+angular_velocity_min = -200.00002
+angular_velocity_max = 199.99998
+gravity = Vector3(0, 98, 0)
+color_ramp = SubResource("GradientTexture1D_7o83e")
+turbulence_enabled = true
+turbulence_influence_max = 0.3
+
+[node name="CandleBlueBig" type="AnimatedSprite2D" unique_id=935432187]
+sprite_frames = SubResource("SpriteFrames_3f5a0")
+autoplay = "default"
+frame_progress = 0.7117616
+offset = Vector2(0, -21)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1048861823]
+position = Vector2(0, -21)
+texture = SubResource("GradientTexture2D_e2ecl")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=897754648]
+material = SubResource("CanvasItemMaterial_6gwu7")
+position = Vector2(0, -23)
+amount = 3
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ktnts")
