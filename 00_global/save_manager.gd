@@ -2,6 +2,7 @@
 
 extends Node
 
+#创建三个槽位
 const SLOTS: Array[String] = [
 	"save_01", "save_02", "save_03"
 ]
@@ -13,6 +14,10 @@ var persistent_data: Dictionary = {}
 
 
 func _ready() -> void:
+	#这里只需要提醒，链接到_on_scene_enter这个方法(不需要提供参数)
+	#在进入初始场景和每次场景切换的时候会把场景名称(那个字符串)传递过来
+	#用以更新，已发现区域
+	SceneManager.scene_entered.connect( _on_scene_entered )
 	pass
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -58,6 +63,10 @@ func create_new_game_save(slot: int) -> void:
 	save_file.store_line(JSON.stringify(save_data))
 	
 	save_file.close()
+	#上面做的事情，是清除这个栏位的所有信息，
+	#接着创建一个原始信息
+	#写入存档位置，接着关闭，
+	#再加载
 	load_game(slot)
 	pass 
 
@@ -131,3 +140,16 @@ func get_file_name(slot: int) -> String:
 
 func save_file_exists(slot: int) -> bool:
 	return FileAccess.file_exists(get_file_name(slot))
+
+func is_area_discovered(scene_uid: String) -> bool:
+	return discovered_areas.has(scene_uid)
+
+#scene_uid只是一个字符串，判断已发现的区域里面有没有这个字符串
+func _on_scene_entered( scene_uid: String) -> void:
+	if discovered_areas.has( scene_uid ):
+		#什么都不做
+		return
+	else:
+		#没有，就把字符串添加到已发现区域
+		discovered_areas.append( scene_uid )
+	pass

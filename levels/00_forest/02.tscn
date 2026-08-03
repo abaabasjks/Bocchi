@@ -29,19 +29,20 @@ light_mode = 1
 
 [node name="LevelBounds" type="Node2D" parent="." unique_id=1261699190]
 z_index = 256
-position = Vector2(-24, 128)
+position = Vector2(-24, 116)
 script = ExtResource("3_epyyu")
 width = 992
-height = 302
+height = 334
 metadata/_custom_type_script = "uid://cj35wmptptsr3"
 
 [node name="LevelTransition" parent="." unique_id=25539210 instance=ExtResource("3_s2tn3")]
-position = Vector2(-16, 320)
+position = Vector2(-16, 308)
 size = 10
 location = 0
 target_level = "uid://cqabvanatmvp1"
 
 [node name="BackGroundParallaxLayers" type="Node2D" parent="." unique_id=2092609845]
+position = Vector2(0, -12)
 
 [node name="Parallax2D3" type="Parallax2D" parent="BackGroundParallaxLayers" unique_id=1813860613]
 z_index = -10
@@ -140,6 +141,7 @@ position = Vector2(402, 317)
 position = Vector2(231, 316)
 
 [node name="LevelTilemaps" type="Node2D" parent="." unique_id=880845863]
+position = Vector2(0, -12)
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="LevelTilemaps" unique_id=1311687476]
 modulate = Color(0.81128836, 0.81128836, 0.81128836, 1)
@@ -201,6 +203,7 @@ position = Vector2(786, 199)
 frame_progress = 0.0
 
 [node name="ForeGroundElements" type="Node2D" parent="." unique_id=744536018]
+position = Vector2(0, -12)
 
 [node name="ForeGround" type="Parallax2D" parent="ForeGroundElements" unique_id=5124967]
 modulate = Color(0, 0, 0, 1)
@@ -307,10 +310,15 @@ texture = ExtResource("10_ns032")
 offset = Vector2(0, 256)
 
 [node name="PlayerSpawn" parent="." unique_id=2061105132 instance=ExtResource("10_7fi1v")]
-position = Vector2(106, 325)
+position = Vector2(106, 313)
 
 [node name="LevelTransition2" parent="." unique_id=386446208 instance=ExtResource("3_s2tn3")]
-position = Vector2(966, 325)
+position = Vector2(966, 313)
 size = 10
 location = 1
 target_level = "uid://bb41fp0em2p7e"
+
+[node name="LevelTransition3" parent="." unique_id=2111506249 instance=ExtResource("3_s2tn3")]
+position = Vector2(165, 400)
+size = 8
+target_level = "uid://vkh0e1cwyaqv"

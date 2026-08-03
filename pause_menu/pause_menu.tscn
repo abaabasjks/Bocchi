@@ -1,0 +1,305 @@
+[gd_scene format=3 uid="uid://dcnyr4pn1j2wg"]
+
+[ext_resource type="Script" uid="uid://7ua3ky7bkgkq" path="res://pause_menu/scripts/pause_menu.gd" id="1_5hbt6"]
+[ext_resource type="Texture2D" uid="uid://bwvc0v7st5x7t" path="res://player/HUD/dialog box big.png" id="2_rd7dy"]
+[ext_resource type="PackedScene" uid="uid://cphx47opcmvtp" path="res://pause_menu/map_node.tscn" id="2_uwtdo"]
+
+[sub_resource type="FontVariation" id="FontVariation_c7wlu"]
+spacing_glyph = 5
+
+[sub_resource type="Gradient" id="Gradient_uwtdo"]
+offsets = PackedFloat32Array(0, 0.55026454, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.17219998, 0.5608799, 0.82, 1, 0, 0.26550016, 0.59, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b4s0c"]
+gradient = SubResource("Gradient_uwtdo")
+width = 5
+height = 5
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Animation" id="Animation_s1glv"]
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wn31l"]
+resource_name = "default"
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.2929663, 0.21212006, 0.9121282, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b0obc"]
+_data = {
+&"RESET": SubResource("Animation_s1glv"),
+&"default": SubResource("Animation_wn31l")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uwtdo"]
+texture = ExtResource("2_rd7dy")
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1352081808]
+process_mode = 3
+script = ExtResource("1_5hbt6")
+
+[node name="Control" type="Control" parent="." unique_id=1922072311]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1833810439]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.47058824)
+
+[node name="ColorRect2" type="ColorRect" parent="Control" unique_id=1654677109]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Control/ColorRect2" unique_id=184641166]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -8.0
+offset_right = -32.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.3019608, 0.16470589, 0.15294118, 1)
+theme_override_fonts/font = SubResource("FontVariation_c7wlu")
+text = "暂停游戏"
+horizontal_alignment = 2
+
+[node name="PauseScreen" type="Control" parent="Control" unique_id=135817066]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Map" type="Control" parent="Control/PauseScreen" unique_id=691967619]
+anchors_preset = 0
+offset_left = 96.0
+offset_top = 24.0
+offset_right = 448.0
+offset_bottom = 204.0
+
+[node name="MapNode" parent="Control/PauseScreen/Map" unique_id=1035743588 instance=ExtResource("2_uwtdo")]
+modulate = Color(0.2586726, 0.52192175, 0.26494476, 1)
+layout_mode = 1
+offset_left = 50.0
+offset_top = 71.0
+offset_right = 74.0
+offset_bottom = 81.0
+linked_scene = "uid://cqabvanatmvp1"
+entrance_right = Array[float]([3.275])
+
+[node name="MapNode2" parent="Control/PauseScreen/Map" unique_id=815427209 instance=ExtResource("2_uwtdo")]
+modulate = Color(0.28397906, 0.44307235, 0.5833025, 1)
+layout_mode = 0
+offset_left = 101.0
+offset_top = 74.0
+offset_right = 113.0
+offset_bottom = 81.0
+linked_scene = "uid://bb41fp0em2p7e"
+entrance_left = Array[float]([2.0])
+
+[node name="MapNode3" parent="Control/PauseScreen/Map" unique_id=249869141 instance=ExtResource("2_uwtdo")]
+modulate = Color(0.2586726, 0.52192175, 0.26494476, 1)
+layout_mode = 0
+offset_left = 75.0
+offset_top = 73.0
+offset_right = 100.0
+offset_bottom = 81.0
+linked_scene = "uid://1jyamroxicdc"
+entrance_right = Array[float]([2.0])
+entrance_bottom = Array[float]([4.725])
+entrance_left = Array[float]([2.0])
+
+[node name="MapNode4" parent="Control/PauseScreen/Map" unique_id=700199329 instance=ExtResource("2_uwtdo")]
+modulate = Color(0.41083702, 0.23615576, 0.5438434, 1)
+layout_mode = 0
+offset_left = 75.0
+offset_top = 83.0
+offset_right = 98.0
+offset_bottom = 91.0
+linked_scene = "uid://vkh0e1cwyaqv"
+entrance_top = Array[float]([6.825])
+
+[node name="PlayerIndicator" type="Control" parent="Control/PauseScreen/Map" unique_id=2010950178]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control/PauseScreen/Map/PlayerIndicator" unique_id=1260208620]
+layout_mode = 1
+offset_right = 5.0
+offset_bottom = 5.0
+texture = SubResource("GradientTexture2D_b4s0c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/PauseScreen/Map/PlayerIndicator" unique_id=469377174]
+libraries/ = SubResource("AnimationLibrary_b0obc")
+autoplay = &"default"
+
+[node name="Label" type="Label" parent="Control/PauseScreen" unique_id=206751465]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 64.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_uwtdo")
+text = "能力"
+
+[node name="Label2" type="Label" parent="Control/PauseScreen" unique_id=1472339942]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 24.0
+offset_right = 136.0
+offset_bottom = 40.0
+text = "地图"
+
+[node name="SystemMenuButton" type="Button" parent="Control/PauseScreen" unique_id=1445021925]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -40.0
+offset_right = -24.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "系统"
+
+[node name="System" type="Control" parent="Control" unique_id=1169701963]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/System" unique_id=1910751584]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.0
+offset_top = 20.0
+offset_right = 164.0
+offset_bottom = 220.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/System/VBoxContainer" unique_id=1190581439]
+layout_mode = 2
+
+[node name="BackToMapButton" type="Button" parent="Control/System/VBoxContainer/HBoxContainer" unique_id=1491817628]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "返回地图"
+
+[node name="BackToTitleButton" type="Button" parent="Control/System/VBoxContainer/HBoxContainer" unique_id=549424392]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "返回主界面"
+
+[node name="Label" type="Label" parent="Control/System/VBoxContainer" unique_id=914847728]
+layout_mode = 2
+text = "音量"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/System/VBoxContainer" unique_id=104458937]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/System/VBoxContainer/HBoxContainer2" unique_id=1204026744]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "音乐音量"
+
+[node name="MusicSlider" type="HSlider" parent="Control/System/VBoxContainer/HBoxContainer2" unique_id=1389762306]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/System/VBoxContainer" unique_id=1329631510]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/System/VBoxContainer/HBoxContainer3" unique_id=2069070545]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "音效"
+
+[node name="SFXSlider" type="HSlider" parent="Control/System/VBoxContainer/HBoxContainer3" unique_id=1443447595]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/System/VBoxContainer" unique_id=1697267676]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/System/VBoxContainer/HBoxContainer4" unique_id=1643735389]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "UI音效"
+
+[node name="UISlider" type="HSlider" parent="Control/System/VBoxContainer/HBoxContainer4" unique_id=1584190847]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 0.5

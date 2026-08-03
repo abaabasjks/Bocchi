@@ -21,6 +21,7 @@ func _ready() -> void:
 	#这里是为了解决，一开始current_scene为空值的问题(但是一般正常游玩，不会是空值的())
 	var current_scene: String = get_tree().current_scene.scene_file_path
 	current_scene_uid = ResourceUID.path_to_uid(current_scene)
+	scene_entered.emit( current_scene_uid )
 	pass
 
 func transition_scene(_new_scene: String, _target_area_name: String, player_offset: Vector2, _dir: String) -> void:

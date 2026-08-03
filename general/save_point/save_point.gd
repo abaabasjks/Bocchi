@@ -22,7 +22,6 @@ func _on_player_exited(_n: Node2D) -> void:
 	Messages.input_hint_changed.emit("")
 
 func _on_player_interacted(_player: Player) -> void:
-	print("这是")
 	#这里要保存游戏
 	#治疗玩家
 	#加入动画
