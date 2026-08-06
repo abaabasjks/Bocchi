@@ -6,6 +6,8 @@
 [ext_resource type="TileSet" uid="uid://cahj72poevl6p" path="res://levels/tilesets/forgotten_forest.tres" id="3_2dq6q"]
 [ext_resource type="PackedScene" uid="uid://d13x2r56066eb" path="res://levels/props/torch.tscn" id="4_vbjqi"]
 [ext_resource type="Texture2D" uid="uid://c2tfxs1qdlcvo" path="res://title_screen/metroidvania_logo.png" id="5_0m3ch"]
+[ext_resource type="Script" uid="uid://b2ner2kc5548b" path="res://music/music_auto_trigger.gd" id="7_oqrgu"]
+[ext_resource type="AudioStream" uid="uid://blnniab1vk1rw" path="res://music/title_01.ogg" id="8_fv0o7"]
 
 [sub_resource type="Animation" id="Animation_fk0fn"]
 length = 0.001
@@ -239,3 +241,8 @@ text = "02. 加载游戏"
 unique_name_in_owner = true
 layout_mode = 2
 text = "03. 加载游戏"
+
+[node name="MusicAutoTrigger" type="Node" parent="." unique_id=1253318944]
+script = ExtResource("7_oqrgu")
+track = ExtResource("8_fv0o7")
+metadata/_custom_type_script = "uid://b2ner2kc5548b"

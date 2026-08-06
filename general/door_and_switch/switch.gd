@@ -38,6 +38,7 @@ func _on_player_exited(_n: Node2D) -> void:
 
 func _on_player_interacted( _player: Player) -> void:
 	#Audio playback
+	Audio.play_spatial_sound( DOOR_SWITCH_AUDIO, global_position )
 	#唯一的数据
 	SaveManager.persistent_data[ unique_name() ] = "open"
 	activated.emit()

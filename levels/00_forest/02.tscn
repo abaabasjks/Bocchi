@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://d13x2r56066eb" path="res://levels/props/torch.tscn" id="8_yy75x"]
 [ext_resource type="PackedScene" uid="uid://bvlu10jloafsd" path="res://general/player_spawn/player_spawn.tscn" id="10_7fi1v"]
 [ext_resource type="Texture2D" uid="uid://hy326hn5tm5t" path="res://levels/tilesets/sprites/light_stream.jpg" id="10_ns032"]
+[ext_resource type="Script" uid="uid://b2ner2kc5548b" path="res://music/music_auto_trigger.gd" id="11_xo2mp"]
+[ext_resource type="AudioStream" uid="uid://umokpcwvfu2y" path="res://music/forest_01.ogg" id="12_5fcq3"]
 
 [sub_resource type="Gradient" id="Gradient_qmxb0"]
 colors = PackedColorArray(0.32941177, 0.4117647, 0.4, 1, 0.105882354, 0.17254902, 0.2, 0)
@@ -322,3 +324,8 @@ target_level = "uid://bb41fp0em2p7e"
 position = Vector2(165, 400)
 size = 8
 target_level = "uid://vkh0e1cwyaqv"
+
+[node name="MusicAutoTrigger" type="Node" parent="." unique_id=1449571402]
+script = ExtResource("11_xo2mp")
+track = ExtResource("12_5fcq3")
+metadata/_custom_type_script = "uid://b2ner2kc5548b"

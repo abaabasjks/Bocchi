@@ -2,6 +2,7 @@
 
 extends Node
 
+const CONFIG_FILE_PATH = "user://settings.cfg"
 #创建三个槽位
 const SLOTS: Array[String] = [
 	"save_01", "save_02", "save_03"
@@ -17,6 +18,7 @@ func _ready() -> void:
 	#这里只需要提醒，链接到_on_scene_enter这个方法(不需要提供参数)
 	#在进入初始场景和每次场景切换的时候会把场景名称(那个字符串)传递过来
 	#用以更新，已发现区域
+	load_configuration()
 	SceneManager.scene_entered.connect( _on_scene_entered )
 	pass
 
@@ -62,7 +64,7 @@ func create_new_game_save(slot: int) -> void:
 	#这里是把上面需要存储的数据，先序列化为JSON文件，接着在这个文件写入一行数据，换行
 	save_file.store_line(JSON.stringify(save_data))
 	
-	save_file.close()
+	save_file.close() 
 	#上面做的事情，是清除这个栏位的所有信息，
 	#接着创建一个原始信息
 	#写入存档位置，接着关闭，
@@ -153,3 +155,33 @@ func _on_scene_entered( scene_uid: String) -> void:
 		#没有，就把字符串添加到已发现区域
 		discovered_areas.append( scene_uid )
 	pass
+
+#region Configuration() -> void:
+
+func save_configuration() -> void:
+	var config := ConfigFile.new()
+	# 1. 从 Godot 的音频服务器（AudioServer）中，获取第 2、3、4 号总线的当前线性音量
+	# 2. 把它们分别以 "music"、"sfx"、"ui" 为键名，存到 "audio" 这个分类下
+	config.set_value( "audio", "music", AudioServer.get_bus_volume_linear( 2 ) )
+	config.set_value( "audio", "sfx", AudioServer.get_bus_volume_linear( 3 ) )
+	config.set_value( "audio", "ui", AudioServer.get_bus_volume_linear( 4 ) )
+	config.save( CONFIG_FILE_PATH )
+	pass
+
+func load_configuration() -> void:
+	var config := ConfigFile.new()
+	var err = config.load( CONFIG_FILE_PATH )
+	
+	if err != OK:
+		AudioServer.set_bus_volume_linear( 2,  0.8)
+		AudioServer.set_bus_volume_linear( 3, 1.0)
+		AudioServer.set_bus_volume_linear( 4, 1.0)
+		save_configuration()
+		return
+	
+	AudioServer.set_bus_volume_linear( 2, config.get_value( "audio", "music", 0.8))
+	AudioServer.set_bus_volume_linear( 3, config.get_value( "audio", "sfx", 1.0))
+	AudioServer.set_bus_volume_linear( 4, config.get_value( "audio", "ui", 1.0))
+	pass
+
+#endregion

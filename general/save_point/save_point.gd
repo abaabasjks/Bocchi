@@ -33,5 +33,5 @@ func _on_player_interacted(_player: Player) -> void:
 	
 	animation_player.play("game_saved")
 	animation_player.seek(0)
-	
+	Audio.ui_success()
 	pass

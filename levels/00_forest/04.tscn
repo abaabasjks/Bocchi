@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://ccshs22gaftle" path="res://general/level_transition/LevelTransition.tscn" id="5_2hhtl"]
 [ext_resource type="PackedScene" uid="uid://brrfarufvx431" path="res://general/door_and_switch/door.tscn" id="6_1vjl2"]
 [ext_resource type="PackedScene" uid="uid://ndimvuegwbri" path="res://general/door_and_switch/switch.tscn" id="7_k841l"]
+[ext_resource type="Script" uid="uid://b2ner2kc5548b" path="res://music/music_auto_trigger.gd" id="8_rklp7"]
+[ext_resource type="AudioStream" uid="uid://cekoav0epy8qq" path="res://music/dungeon_01.ogg" id="9_d3fjw"]
 
 [node name="04" type="Node2D" unique_id=636883793]
 
@@ -55,3 +57,8 @@ position = Vector2(-162, 255)
 
 [node name="Switch" parent="Door" unique_id=633893899 instance=ExtResource("7_k841l")]
 position = Vector2(111, 6)
+
+[node name="MusicAutoTrigger" type="Node" parent="." unique_id=897934009]
+script = ExtResource("8_rklp7")
+track = ExtResource("9_d3fjw")
+metadata/_custom_type_script = "uid://b2ner2kc5548b"
