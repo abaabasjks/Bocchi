@@ -7,6 +7,7 @@ func init() -> void:
 	pass
 
 func enter() -> void:
+	VisualEffects.jump_dust( player.global_position )
 	#播放动画但是直接暂停
 	player.animation_player.play("jump")
 	player.animation_player.pause()

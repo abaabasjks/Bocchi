@@ -16,6 +16,20 @@ colors = PackedColorArray(0.8627451, 0.34117648, 0.34117648, 1, 0.9019608, 0.498
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4jtec"]
 gradient = SubResource("Gradient_tdgrf")
 
+[sub_resource type="GDScript" id="GDScript_vb1bs"]
+script/source = "extends Button
+
+
+func _ready() -> void:
+	pressed.connect( _on_pressed )
+	pass
+
+func _on_pressed() -> void:
+	var player: Node2D = get_tree().get_first_node_in_group(\"Player\")
+	VisualEffects.jump_dust( player.global_position )
+	pass
+"
+
 [node name="PlayerHud" type="CanvasLayer" unique_id=1971178034]
 process_mode = 3
 layer = 2
@@ -64,3 +78,12 @@ rounded = true
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_26715")
 texture_progress = SubResource("GradientTexture2D_4jtec")
+
+[node name="Button" type="Button" parent="Control" unique_id=1979153968]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 11.0
+offset_right = 456.0
+offset_bottom = 35.0
+text = "测试"
+script = SubResource("GDScript_vb1bs")
