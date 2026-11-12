@@ -11,6 +11,7 @@ const DEBUG_JUMP_INDICATOR = preload("uid://bh5w0awpjg4w7")
 @onready var one_way_platform_shape_cast_2d: ShapeCast2D = $OneWayPlatformShapeCast2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var attack_area: AttackArea = %AttackArea
 
 #endregion 
 
@@ -75,6 +76,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		var pause_menu: PauseMenu = load("res://pause_menu/pause_menu.tscn").instantiate()
 		add_child(pause_menu)
 		return
+	if event.is_action_pressed( "attack" ):
+		attack_area.activate()
+		return
+	
 	#if event is InputEventKey and event.pressed:
 		#if event.keycode == KEY_MINUS:
 			#if Input.is_key_pressed(KEY_SHIFT):
@@ -156,6 +161,9 @@ func update_direction() -> void:#更新方向
 	#这里有两个方向，现在的和之前的，
 	#如果现在方向和之前的不一样就表示需要翻转
 	if prev_direction.x != direction.x:
+		print("翻转")
+		attack_area.flip( direction.x )
+		print("完成")
 		if direction.x < 0: 
 			sprite_2d.flip_h = true
 		elif direction.x > 0:

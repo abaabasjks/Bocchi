@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bru0hxoenp4ha" path="res://00_global/player_hud/health_bar_frame.png" id="1_hv14i"]
 [ext_resource type="Script" uid="uid://swogkjn3qy17" path="res://00_global/player_hud/player_hud.gd" id="1_vb1bs"]
+[ext_resource type="Resource" uid="uid://d3knplm1jimit" path="res://00_global/visual_effects_factory/hit_particles_settings/hit_wood_large.tres" id="3_26715"]
 
 [sub_resource type="Gradient" id="Gradient_vb1bs"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -19,14 +20,14 @@ gradient = SubResource("Gradient_tdgrf")
 [sub_resource type="GDScript" id="GDScript_vb1bs"]
 script/source = "extends Button
 
-
+@export var particle_settings: HitParticleSettings
 func _ready() -> void:
 	pressed.connect( _on_pressed )
 	pass
 
 func _on_pressed() -> void:
 	var player: Node2D = get_tree().get_first_node_in_group(\"Player\")
-	VisualEffects.jump_dust( player.global_position )
+	VisualEffects.hit_particles(player.global_position, Vector2(1, 0), particle_settings)
 	pass
 "
 
@@ -87,3 +88,4 @@ offset_right = 456.0
 offset_bottom = 35.0
 text = "测试"
 script = SubResource("GDScript_vb1bs")
+particle_settings = ExtResource("3_26715")

@@ -12,8 +12,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	offset = Vector2(
-		randf_range( -shake_strength, -shake_strength),
-		randf_range( -shake_strength, -shake_strength)
+		randf_range( -shake_strength, shake_strength),
+		randf_range( -shake_strength, shake_strength)
 	)
 	shake_strength = lerp( shake_strength, 0.0, shake_decay_rate * delta)
 	pass

@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://brr16x2fjhaic" path="res://player/scripts/player_camera.gd" id="7_hg6s5"]
 [ext_resource type="Script" uid="uid://cxk2y0tmymjmd" path="res://player/scripts/input_hints.gd" id="7_rgyib"]
 [ext_resource type="Texture2D" uid="uid://bf7o02cs4dv7q" path="res://player/sprites/input_icons.png" id="8_hg6s5"]
+[ext_resource type="Script" uid="uid://brj3xnku8y70x" path="res://general/scripts/attack_area.gd" id="10_8t03j"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g6k8r"]
 load_path = "res://.godot/imported/1.png-44d915f9540593e4a8ac8a83f796558c.ctex"
@@ -156,6 +157,9 @@ scale_curve = SubResource("CurveTexture_ebec5")
 color_ramp = SubResource("GradientTexture1D_8t03j")
 turbulence_enabled = true
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ieo8"]
+size = Vector2(45.5, 20)
+
 [node name="Player" type="CharacterBody2D" unique_id=219147646 groups=["Player"]]
 z_index = 1
 collision_layer = 16
@@ -249,3 +253,17 @@ lifetime = 0.2
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_yllr7")
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=520775809]
+unique_name_in_owner = true
+position = Vector2(0, -22)
+collision_layer = 0
+collision_mask = 96
+script = ExtResource("10_8t03j")
+damage = 10.0
+metadata/_custom_type_script = "uid://brj3xnku8y70x"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1966335984]
+position = Vector2(23.25, 0)
+shape = SubResource("RectangleShape2D_2ieo8")
+debug_color = Color(0.70196074, 0.023929955, 0, 0.41960785)

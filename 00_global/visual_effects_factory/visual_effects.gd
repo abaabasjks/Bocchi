@@ -2,6 +2,7 @@ extends Node
 
 #在这里放置很多的，视觉特效
 const DUST_EFFECT = preload("uid://d0oysoc5n5via")
+const HIT_PARTICLES = preload("uid://btldukcvpulsf")
 
 signal camera_shook( streng: float )
 
@@ -19,6 +20,8 @@ func _create_dust_effect( pos: Vector2 ) -> DustEffect:
 	pass
 
 
+#总的来说，就是生成一个场景(DustEffect类型的)
+#然后根据类型播放对应的动画
 #创建跳跃的灰尘，
 func jump_dust( pos: Vector2 ) -> void:
 	var dust: DustEffect = _create_dust_effect( pos )
@@ -38,7 +41,13 @@ func hit_dust( pos: Vector2 ) -> void:
 	dust.start( DustEffect.TYPE.HIT )
 	pass
 
-func hit_particles() -> void:
+func hit_particles( pos: Vector2, dir: Vector2, settings: HitParticleSettings) -> void:
+	var p: HitParticles = HIT_PARTICLES.instantiate()
+	add_child( p )
+	p.global_position = pos
+	p.start( dir, settings )
+	
+	
 	
 	pass
 

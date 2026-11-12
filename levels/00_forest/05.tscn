@@ -4,8 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://dfbu0rv00ypjy" path="res://levels/props/candle_big.tscn" id="2_ocngb"]
 [ext_resource type="PackedScene" uid="uid://d13x2r56066eb" path="res://levels/props/torch.tscn" id="3_6o5dd"]
 [ext_resource type="Script" uid="uid://cj35wmptptsr3" path="res://general/scripts/level_bounds.gd" id="3_xbpcm"]
-[ext_resource type="PackedScene" uid="uid://ccshs22gaftle" path="res://general/level_transition/LevelTransition.tscn" id="4_5iu78"]
 [ext_resource type="PackedScene" uid="uid://bvlu10jloafsd" path="res://general/player_spawn/player_spawn.tscn" id="4_wma0d"]
+[ext_resource type="Script" uid="uid://ctts4v4glb7x8" path="res://general/scripts/damage_area.gd" id="6_u6uvq"]
+[ext_resource type="AudioStream" uid="uid://dph55gl2xq0f1" path="res://general/audio/hit.wav" id="7_ocngb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocngb"]
+size = Vector2(78.5, 88.5)
 
 [node name="05" type="Node2D" unique_id=1161691699]
 
@@ -56,9 +60,13 @@ width = 896
 height = 430
 metadata/_custom_type_script = "uid://cj35wmptptsr3"
 
-[node name="LevelTransition" parent="." unique_id=25539210 instance=ExtResource("4_5iu78")]
-position = Vector2(-188, 304)
-size = 9
-location = 0
-target_level = "uid://1jyamroxicdc"
-target_area_name = "LevelTransition2"
+[node name="DamageArea" type="Area2D" parent="." unique_id=191201328]
+position = Vector2(249, 265)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("6_u6uvq")
+audio = ExtResource("7_ocngb")
+metadata/_custom_type_script = "uid://ctts4v4glb7x8"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=1744845864]
+shape = SubResource("RectangleShape2D_ocngb")
